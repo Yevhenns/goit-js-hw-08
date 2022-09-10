@@ -10,3 +10,10 @@ player.on('play', function () {
 player.getVideoTitle().then(function (title) {
   console.log('title:', title);
 });
+const durationData = {
+  videoPlayerCurrentTime: 45,
+};
+player.on('timeupdate', function (duration) {
+  durationData.videoPlayerCurrentTime = player.on;
+  console.log(durationData);
+});
