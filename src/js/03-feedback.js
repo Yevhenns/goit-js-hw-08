@@ -18,10 +18,10 @@ function onFormData(evt) {
   evt.preventDefault();
   formData.email = form.elements.email.value;
   formData.message = form.elements.message.value;
-  const dataJSON = JSON.stringify(formData);
+  const dataJSON = JSON.stringify(STORAGE_KEY, formData);
   // localStorage.setItem(STORAGE_KEY, form.elements.email.value);
   // localStorage.setItem(STORAGE_KEY, form.elements.message.value);
-  console.log(dataJSON);
+  // console.log();
 }
 
 function fillForm() {
