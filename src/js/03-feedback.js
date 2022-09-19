@@ -13,23 +13,34 @@ form.addEventListener('input', throttle(onFormData, 500));
 
 function onFormData(evt) {
   evt.preventDefault();
-  formData.email = form.elements.email.value;
-  formData.message = form.elements.message.value;
+  formData.email = form.elements.email;
+  formData.message = form.elements.message;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
-function fillForm() {
+console.log(formData);
+
+function fillForm(evt) {
+  evt.preventDefault();
   const savedData = localStorage.getItem(STORAGE_KEY);
   const parsedData = JSON.parse(savedData);
+
+  console.log(parsedData);
+
   if (inputEmail.value) {
     inputEmail.value = parsedData.email;
   } else if (inputMessage.value) {
     inputMessage.value = parsedData.message;
   }
-  return '';
+  console.log(parsedData);
 }
-submitBtn.addEventListener('reset', onFormSubmit);
-// localStorage.clear();
-function onFormSubmit(evt) {
-  localStorage.removeItem(STORAGE_KEY);
-}
+
+// form.addEventListener('submit', onFormSubmit);
+
+// function onFormSubmit(evt) {
+//   evt.preventDefault();
+
+//   evt.currentTarget.reset();
+//   localStorage.clear();
+
+// }
